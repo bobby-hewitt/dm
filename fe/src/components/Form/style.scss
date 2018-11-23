@@ -1,0 +1,63 @@
+@import 'styles/colors.scss';
+
+.formButton{
+	height:40px;
+	display: flex;
+	flex:1;
+	max-width: 200px;
+	padding: 0 20px;
+	font-weight: 600;
+	align-items: center;
+	text-transform: uppercase;
+	justify-content: center;
+	line-height:40px;
+	color:white;
+	cursor: pointer;
+	border-radius: 2px;
+	&.primary{
+		
+	}
+	&.disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+
+#formButtonsContainer{
+	width:100%;
+	margin-top:20px;
+	display: flex;
+	align-items: flex-end;
+	flex-direction: row;
+	justify-content: flex-end;
+	flex:1;
+}
+#deleteButton{
+	color:#242424;
+}
+#submitButton{
+	background: $black;
+}
+.formContainer{
+	display: flex;
+	flex-direction: column;
+	flex:1;
+}
+.rowContainer{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	flex: 1 1 auto;
+}
+
+.formHeader{
+	font-size: 14px;
+	margin-left: 5px;
+	margin-bottom: 0px;
+}
+label, .label{
+	font-size:14px;
+	font-weight: 400;
+	margin: 20px 0px 10px;
+}
