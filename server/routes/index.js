@@ -1,4 +1,8 @@
-const authenticateRequest = require('./helpers/authenticateRequest')
+const authenticateRequest = require('../helpers/authenticateRequest')
+var express = require('express');
+var passport = require('passport');
+var router = express.Router();
+const User = require('../models/user')
 
 router.post('/register', function (req, res) {
   req.body.email = req.body.email.toLowerCase()
@@ -14,6 +18,9 @@ router.post('/register', function (req, res) {
 });
 
 router.post('/login', function (req, res, next) {
+  console.log(req.body.email)
+  console.log(req.body.password)
+  
   passport.authenticate('local', function (err, user, info) {
     if (err) {
       return next(err);

@@ -1,5 +1,10 @@
 module.exports = function(req){
-	if (req && req.headers && req.headers.jwt){
-		return req.headers.jwt.toString()
+	console.log('loogin for jwt')
+	if (req && req.cookies ){
+		//search for jwt
+		console.log('cookies', req.cookies)
+		// return req.headers.jwt.toString()
+	} else {
+		return ''
 	}
 }

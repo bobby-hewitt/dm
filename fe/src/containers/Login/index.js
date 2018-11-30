@@ -7,7 +7,7 @@ import Form, {TextInput, FindAddress} from 'components/Form'
 import { post, get, del,  } from 'helpers/request'
 import { setUser } from 'actions/user'
 
-class Register extends Component {
+class Login extends Component {
 
 	constructor(props){
 		super(props)
@@ -22,45 +22,31 @@ class Register extends Component {
 		.then((data) => {
 			console.log(data)
 		})
-		// get('/users/h')
-		// .then((data) => {
-		// 	console.log(data)
-		// })
 	}
 	onSubmit(form){
-		if (form.password !== form.confirmPassword){
-			this.setState({passwordError: true})
-		} else if (!form.email) {
-			this.setState({emailError: true})
-		} else {
+		
 			//handle submit form
-			post('/users', form)
+			post('/users/login', form)
 			.then((data) => {
 				this.props.setUser(data)
+				this.props.push('/test')
 			})
 			.catch((err) => {
 				console.log(err)
-				if (err.responseText === 'Email already in use' ||err.responseText === 'A user with the given username is already registered'){
-					this.setState({emailError: 'Email already in use'})
-				} else {
-					this.setState({emailError: 'Invalid email address'})
-				}
-				
 			})
 			this.setState({passwordError: false, emailError: false})
-		}
+		
 	}
 	render(){
 		return(
 			<div>
 				<Form 
-					submitText="Register"
-					formId="register"
+					formId="Login"
 					onSubmit={this.onSubmit.bind(this)}
 				>
-					<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : 'Email'} fieldError={this.state.emailError} placeholder="email"/>
-					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : 'Password'}fieldError={this.state.passwordError} placeholder="password"/>
-					<TextInput name="confirmPassword" type="password" fieldError={this.state.passwordError} placeholder="password"/>
+					<TextInput name="username" type="email" fieldError={this.state.emailError} placeholder="email"/>
+					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : null}fieldError={this.state.passwordError} placeholder="password"/>
+		
 				</Form>
 
 			</div>
@@ -81,4 +67,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Register)
+)(Login)
