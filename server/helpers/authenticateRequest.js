@@ -1,31 +1,23 @@
 var passport = require('passport');
 
 module.exports = function(req,res,next){
-	console.log(req.cookies)
-	if (!req.cookies ){
-		next('NOT_AUTHORISED')
-	} else if (!req.cookies.jwt){
-		next('NOT_AUTHORISED')
-	} else {
-		next('READY TO AUTHORISE')
-	}
-
-
-
-	// return new Promise ((resolve, reject) => {
+	return new Promise ((resolve, reject) => {
 	// 	console.log('AUTHENTICATING')
-	// 	passport.authenticate('jwt', function (err, user, info) {
-	// 	    if (err) {
-	// 	    	console.log('err', err)
-	// 	      	reject({error: err})
-	// 	    }
-	// 	    if (!user) {
-	// 	    	console.log('no user found')
-	// 	     	reject({ error: 'Invalid credentials.' });
-	// 	    }
-	// 	    if (user) {
-	// 	     	resolve(user)
-	// 	    }
- //  		})(req, res, next);
-	// });
+		passport.authenticate('jwt', function (err, user, info) {
+		    if (err) {
+		    	console.log('err', err)
+		      	reject({error: err})
+		      	// res.status(403).send('Error finding user')
+		    }
+		    if (!user) {
+		    	console.log('no user found')
+		    	// res.status(403).send('No user')
+		     	reject({ error: 'Invalid credentials.' });
+		    }
+		    if (user) {
+		    	console.log('user found')
+		     	resolve(user)
+		    }
+  		})(req, res, next);
+	});
 }

@@ -7,13 +7,12 @@ const UserController = require('../controllers/userController')
 
 
 router.get('/:id', function (req, res) {
-	console.log('cookies', req.cookies)
 	let obj = {}
 	UserController.get(obj)
 	.then((user) => {
 		res.status(200).send(user)
 	})
-	.catch((err) => {
+	.catch((err) => {		
 		res.status(500).send(err)
 	})  
 });

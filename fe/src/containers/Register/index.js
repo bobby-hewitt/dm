@@ -18,14 +18,14 @@ class Register extends Component {
 		}
 	}
 	componentWillMount(){
-		del('/users/')
-		.then((data) => {
-			console.log(data)
-		})
-		// get('/users/h')
+		// del('/users/')
 		// .then((data) => {
 		// 	console.log(data)
 		// })
+		get('/users/h')
+		.then((data) => {
+			console.log(data)
+		})
 	}
 	onSubmit(form){
 		if (form.password !== form.confirmPassword){
@@ -36,6 +36,7 @@ class Register extends Component {
 			//handle submit form
 			post('/users', form)
 			.then((data) => {
+				console.log('setting user')
 				this.props.setUser(data)
 			})
 			.catch((err) => {

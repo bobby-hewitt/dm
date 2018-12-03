@@ -5,11 +5,18 @@ export const get = (route) => {
 	const url = host + route
 
 	return new Promise((resolve, reject) => {
-		$.get(url, (data) =>{
-			resolve(data)
-		}).fail((err) => {
-			reject(err)
-		})
+		
+$.ajax({
+	url: url,
+	type: "GET",
+	beforeSend: function(xhr){xhr.setRequestHeader('jwt', window.localStorage.packagejwt || '');},
+	success: function(response) { 
+		resolve(response)
+	},
+	error: function(err){
+		reject(err)
+	}
+});
 	})
 }
 
@@ -37,21 +44,30 @@ export const post = (route, dataIn) => {
 		//     .then(res => resolve(res))
 		//     .catch(error => reject({ error: "Server Error" }));
 
-		fetch(url, {
-		    method: 'POST',
-		    mode: 'no-cors',
-		    headers: {      	
-			    
-			    'Content-Type': 'application/json',
-			    
-			},
-		    redirect: 'follow',
-		    credentials: 'include', // Don't forget to specify this if you need cookies
-		    body: dataToPass
-		})
-		.then(response => response.json())
-		    .then(res => resolve(res))
-		    .catch(error => reject({ error: "Server Error" }));
+		// fetch('/your/server_endpoint', {
+  //   method: 'POST',
+  //   mode: 'same-origin',
+  //   redirect: 'follow',
+  //   credentials: 'include', // Don't forget to specify this if you need cookies
+  //   headers: headers,
+  //   body: JSON.stringify({
+  //       first_name: 'John',
+  //       last_name: 'Doe'
+  //   })
+// })
+
+$.ajax({
+	url: url,
+	type: "POST",
+	data: dataIn,
+	beforeSend: function(xhr){xhr.setRequestHeader('jwt', window.localStorage.packagejwt || '');},
+	success: function(response) { 
+		resolve(response)
+	},
+	error: function(err){
+		reject(err)
+	}
+});
 		// $.post( url , dataIn)
 		// .done(function( data ) {
 		// 	resolve(data)
@@ -66,6 +82,7 @@ export const del = (route) => {
 	const url = host + route
 	return new Promise((resolve, reject) => {
 		$.ajax({
+			beforeSend: function(xhr){xhr.setRequestHeader('jwt', window.localStorage.packagejwt || '');},
 			credentials: 'include',
 			xhrFields: {
 		      withCredentials: true

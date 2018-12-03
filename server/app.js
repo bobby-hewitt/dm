@@ -13,42 +13,37 @@ const PrivateRoutes = require('./routes/private');
 const JwtStrategy = require('passport-jwt').Strategy;
 const jwtExtractor = require('./helpers/jwtExtractor');
 const bodyParser = require("body-parser")
+//set up database
+const db = require('./db');
+//apply middleware
 app.use(bodyParser());
-passport.use('local', new LocalStrategy(User.authenticate()));
+app.use(cors())
+app.use(cookieParser());
+// Configure passport strategies
 const options = {
  jwtFromRequest: jwtExtractor,
  passReqToCallback: true,
  secretOrKey: process.env.JWT_SECRET
 }
-// Configure Passport to use local strategy for initial authentication.
-
-// Configure Passport to use JWT strategy to look up Users.
+passport.use('local', new LocalStrategy(User.authenticate()));
 passport.use('jwt', new JwtStrategy(options, function(jwt_payload, user, done) {
-    
-    // User.findOne({email: user.email}, function(err, user) {
-    //     if (err) {
-    //         return done(err, false);
-    //     }
-    //     if (user) {
-    //         return done(null, user);
-    //     } else {
-    //         return done(null, false);
-    //     }
-    // });
+    User.findOne({email: user.email}, function(err, user) {
+        if (err) return done(err, false);
+        if (user) return done(null, user);
+        else return done(null, false);
+    });
 }));
-
-const db = require('./db');
-
-app.use(cors())
-
-app.use(cookieParser());
-
-app.use('/api', authenticateRequest, PrivateRoutes)
+//configure private and public routes
+app.use('/api', function(req,res,next){
+    authenticateRequest(req,res,next)
+    .then((user) => {
+        next()
+    })
+    .catch((err) => {
+        res.status(403).send(err)
+    })}, PrivateRoutes
+)
 
 app.use('/users', UserRoutes);
-
-
-
-
 
 module.exports = app;

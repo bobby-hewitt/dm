@@ -18,11 +18,13 @@ class Register extends Component {
 		}
 	}
 	componentWillMount(){	
-			console.log(document.cookie)
 		
-		get('/api/helllo')
+		
+		get('/api/5c01306968ffe37a8472d479')
 		.then((data) => {
-			console.log(data)
+			console.log('wohooo')
+		}).catch((err)=> {
+			console.log('urgh')
 		})
 	}
 	

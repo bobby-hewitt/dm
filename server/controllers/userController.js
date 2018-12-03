@@ -3,29 +3,6 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 
-exports.login = function(req, res, next) {
-console.log('authenticated',req.body)
-	passport.authenticate('local', function (err, user, info) {
-
-	    if (err) {
-	    	// console.log(;)
-	    	console.log(err)
-	    	res.status(500).send('err');
-	    }
-	    else if (!user) res.status(500).send('Invalid credentials')
-	    else if (user) {
-	    	console.log('resolving')
-	     	var token = jwt.sign({ id: user._id, email: user.email}, process.env.JWT_SECRET);      
-	        // res.send('woooboooo')
-	        res
-
-	        	.status(200)
-	        	res.cookie('jwt', token)
-	        	.send({ user });
-	    }
-	})(req,res,next)
-}
-
 
 exports.post = function (data) {
 	console.log(data)
@@ -34,7 +11,7 @@ exports.post = function (data) {
 		let user = Object.assign({},data)
 		
 		delete user.password
-		console.log('password adter delete', user.password, data.password)
+		
 		User.register(new User(user), data.password, function (err, user) {
 			console.log('saving ')
 			if (err) {

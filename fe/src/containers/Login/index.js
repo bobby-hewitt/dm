@@ -18,17 +18,18 @@ class Login extends Component {
 		}
 	}
 	componentWillMount(){
-		del('/users/')
-		.then((data) => {
-			console.log(data)
-		})
+		// del('/users/')
+		// .then((data) => {
+		// 	console.log(data)
+		// })
 	}
 	onSubmit(form){
 		
 			//handle submit form
 			post('/users/login', form)
 			.then((data) => {
-				this.props.setUser(data)
+				window.localStorage.packagejwt = data.token
+				this.props.setUser(data.user)
 				this.props.push('/test')
 			})
 			.catch((err) => {
