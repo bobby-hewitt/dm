@@ -1,27 +1,46 @@
-import React from 'react';
-import { Route, Switch } from 'react-router'
+import React, { Component } from 'react';
+import { Route, Switch, withRouter } from 'react-router'
 import Home from './containers/Home'
-import FindAddress from './containers/FindAddress'
-import Register from './containers/Register'
-import Login from './containers/Login'
-import APITest from './containers/APITest'
-import PasswordResetRequest from './containers/PasswordResetRequest'
-import PasswordReset from './containers/PasswordReset'
+import Auth from 'containers/Auth'
+import Loading from 'components/Loading'
+import { setLoader } from 'actions/setup'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 
-const Routes = () => (
-  <div>
-    <main>
-      <div className="container">
-        <Route exact path="/" component={Register} />
-        
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/password-reset-request" component={PasswordResetRequest} />
-        <Route path="/password-reset" component={PasswordReset} />
-        <Route exact path="/test" component={APITest} />
-      </div>
-    </main>
-  </div>
-)
+class Routes extends Component {
 
-export default Routes;
+	componentDidMount(){
+		console.log(this.refs.loader)
+		this.props.setLoader(this.refs.loader)
+	}
+
+	render(){
+		return(
+			<div>
+			    <main>
+			      <div className="container">
+			        <Route path="/auth" component={Auth} />
+			        <Route path="/home" component={Home} />
+			        <Loading ref="loader"/>
+			      </div>
+			    </main>
+			</div>
+		)
+	}
+}
+ 
+
+const mapStateToProps = state => ({
+	
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+	setLoader
+}, dispatch)
+
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Routes))

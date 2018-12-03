@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { push } from "react-router-redux";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import Button from 'components/Button'
 import "./style.scss";
 // import $ from "jquery";
 
@@ -46,13 +47,20 @@ export default class Form extends Component {
           {this.props.children}
 
           <div id="formButtonsContainer">
-            <div
+            <Button
+              text={this.props.submitText}
               className={`formButton ${this.props.submitting && "disabled"}`}
               id="submitButton"
               onClick={this.getValues.bind(this, this.props.formId)}
-            >
-              {this.props.submitting ? "Submitting..." : this.props.submitText}
-            </div>
+            />
+            {this.props.secondaryAction && 
+              <Button
+                text={this.props.secondaryText}
+                className={`formButton ${this.props.submitting && "disabled"}`}
+                id="secondaryButton"
+                onClick={this.props.secondaryAction.bind(this)}
+              />
+            }
           </div>
         </form>
       </div>

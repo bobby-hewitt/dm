@@ -26,10 +26,9 @@ class Register extends Component {
 			.then((data) => {
 				window.localStorage.packagejwt = data.token
 				this.props.setUser(data.user)
-				this.props.push('/test')
+				this.props.push(this.props.authRoute)
 			})
 			.catch((err) => {
-				console.log(err)
 				if (err.responseJSON && err.responseJSON.incorrectEmail){
 					this.setState({errorMessage: 'Incorrect email provided'})
 				} else {
@@ -41,7 +40,7 @@ class Register extends Component {
 	}
 
 	onTryAgain(){
-		this.props.push('/password-reset-request')
+		this.props.push('/auth/password-reset-request')
 	}
 
 	render(){
@@ -56,8 +55,8 @@ class Register extends Component {
 					formId="reset"
 					onSubmit={this.onSubmit.bind(this)}
 				>
-					<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : 'Email'} fieldError={this.state.emailError} placeholder="email"/>
-					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : 'Password'}fieldError={this.state.passwordError} placeholder="password"/>
+					<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : null} fieldError={this.state.emailError} placeholder="email"/>
+					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : null}fieldError={this.state.passwordError} placeholder="password"/>
 					<TextInput name="confirmPassword" type="password" fieldError={this.state.passwordError} placeholder="password"/>
 					<TextInput name="token" type="hidden" value={window.location.pathname.split('/')[2]}/>
 				</Form>
@@ -75,7 +74,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-
+	authRoute: state.setup.authRoute
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

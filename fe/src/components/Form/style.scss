@@ -1,38 +1,16 @@
 @import 'styles/colors.scss';
 
-.formButton{
-	height:40px;
-	padding: 0 10px;
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	line-height:40px;
-	color:white;
-	cursor: pointer;
-	border-radius: 2px;
-	&.primary{
-		
-	}
-	&.disabled {
-		opacity: 0.5;
-		pointer-events: none;
-	}
-}
-
-
 #formButtonsContainer{
 	padding:10px;
 	width:100%;
-	margin-top:20px;
-	
+	display: flex;
+	flex-direction: row;
 	width:100px;
+	div{
+		margin:0px 10px 0px 0px;
+	}
 }
-#deleteButton{
-	color:#242424;
-}
-#submitButton{
-	background: $black;
-}
+
 .formContainer{
 	display: flex;
 	flex-direction: column;

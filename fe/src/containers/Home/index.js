@@ -7,13 +7,13 @@ import './style.scss'
 
 class Home extends Component {
 
-	onClick(data){
-		console.log(data)	
+	componentWillMount(){
+		console.log('HOME')
 	}
 
 	render(){
 		return(
-			<div className="home" onClick={this.onClick.bind(this)}>
+			<div className="home" >
 				
 
 			</div>

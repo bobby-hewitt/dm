@@ -30,7 +30,7 @@ class Register extends Component {
 	render(){
 		return(
 			<div>
-				{this.state.errorMessage && 
+				{!this.state.success && this.state.errorMessage && 
 					<p>{this.state.errorMessage}</p>
 				}
 				{!this.state.success &&
@@ -39,7 +39,7 @@ class Register extends Component {
 						formId="resetPassword"
 						onSubmit={this.onSubmit.bind(this)}
 					>
-						<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : 'Email'} fieldError={this.state.emailError} placeholder="email"/>	
+						<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : null} fieldError={this.state.emailError} placeholder="email"/>	
 					</Form>
 				}
 				{this.state.success &&
