@@ -17,7 +17,7 @@ class Register extends Component {
 	}
 
 	onSubmit(form){
-		post('/users/passwordresetrequest', form)
+		this.props.loader.post('/users/passwordresetrequest', form)
 		.then((data) => {
 			this.setState({success: true})
 			// this.props.setUser(data)
@@ -51,7 +51,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-
+	loader: state.setup.loader,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -17,8 +17,9 @@ class Register extends Component {
 			passwordError: false
 		}
 	}
-	componentWillMount(){
-		// del('/users/')
+
+	componentDidMount(){
+		// this.props.loader.del('/users/')
 		// .then((data) => {
 		// 	console.log(data)
 		// })
@@ -33,8 +34,7 @@ class Register extends Component {
 		} else if (!form.email) {
 			this.setState({emailError: true})
 		} else {
-			//handle submit form
-			post('/users', form)
+			this.props.loader.post('/users', form)
 			.then((data) => {
 				window.localStorage.packagejwt = data.token
 				this.props.setUser(data.user)
@@ -59,6 +59,7 @@ class Register extends Component {
 					formId="register"
 					onSubmit={this.onSubmit.bind(this)}
 				>
+					<FindAddress name="email" type="email" label={this.state.emailError ? this.state.emailError : null} fieldError={this.state.emailError} placeholder="email"/>
 					<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : null} fieldError={this.state.emailError} placeholder="email"/>
 					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : null}fieldError={this.state.passwordError} placeholder="password"/>
 					<TextInput name="confirmPassword" type="password" fieldError={this.state.passwordError} placeholder="password"/>
@@ -70,11 +71,13 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-	authRoute: state.setup.authRoute
+	authRoute: state.setup.authRoute,
+	loader: state.setup.loader,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   push: (path) => push(path),
+
   setUser
 }, dispatch)
 

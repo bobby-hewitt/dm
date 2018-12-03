@@ -19,12 +19,16 @@ class Routes extends Component {
 		return(
 			<div>
 			    <main>
+			    {this.props.loader &&
 			      <div className="container">
 			        <Route path="/auth" component={Auth} />
 			        <Route path="/home" component={Home} />
-			        <Loading ref="loader"/>
+			       
 			      </div>
+			  	}
+			       <Loading ref="loader"/>
 			    </main>
+
 			</div>
 		)
 	}
@@ -32,7 +36,7 @@ class Routes extends Component {
  
 
 const mapStateToProps = state => ({
-	
+	loader: state.setup.loader
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

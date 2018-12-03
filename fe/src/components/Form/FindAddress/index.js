@@ -17,35 +17,34 @@ class FindAddress extends Component {
 	}
 
 	onClick(place){
-		// set place to state
 		this.props.setPair({key:'place', value: place})
-		this.setState({inputValue: place.description, results: null})
-
+		this.setState({inputValue: place.description, hiddenValue: place.id, results: null})
 	}
 
 	onChange(e){
 		let value = this.refs.addressLookup.value
 		this.setState({inputValue: value}, () => {
-
 			var service = new window.google.maps.places.AutocompleteService();
 			service.getQueryPredictions({ input: value, sessionToken: this.sessionToken }, (results, status) => {
 				this.setState({results})
 			});
 		})
-		
 	}
 
 	render(){
 		return(
-			<div className="findAddressContainer textInput">
-				<input className="" name="address"value={this.state.inputValue} ref="addressLookup" type="text" onChange={this.onChange.bind(this)} />	
+			<div className="addressInput">
+				<input value={this.state.hiddenValue} name="placeId" ref="addressLookup" type="hidden" className="textInput" placeholder="Address"onChange={this.onChange.bind(this)} />	
+				<input value={this.state.inputValue} name="address" ref="addressLookup" type="text" className="textInput" placeholder="Address"onChange={this.onChange.bind(this)} />	
+				<div className={`"resultsContainer" ${ (this.state.results && this.state.results.length) > 0 && 'expanded'}`}>
 				{this.state.results && this.state.results.map((r,i) => {
 					return(
-						<div key={i}className="result" onClick={this.onClick.bind(this, r)}>
+						<div key={i} className="result p" onClick={this.onClick.bind(this, r)}>
 							{r.description}
 						</div>
 					)
 				})}
+				</div>
 			</div>
 		)
 	}

@@ -23,6 +23,18 @@ router.post('/', function (req, res) {
 	})  
 });
 
+// this is a helper function for dev.  Should be deleted
+router.delete('/', function (req, res) {
+	UserController.delete('ALL')
+	.then((user) => {
+		res.status(200).send(user)
+	})
+	.catch((err) => {
+		res.status(500).send(err)
+	})  
+})
+
+
 router.post('/login', (req, res, next) => {
 	passport.authenticate('local', function (err, user, info) {
 	    if (err) return res.status(500).send('err');
@@ -59,8 +71,9 @@ router.post('/passwordresetrequest', (req, res, next) => {
         email: user.email,
         token
       }
+      console.log(emailData)
       email('password-reset', emailData)
-      res.status(200).send('reset password email sent successfully.')
+      res.send('reset password email sent successfully.')
     }
   ]);
 })
@@ -82,8 +95,14 @@ router.post('/reset', function(req, res) {
 	        		done(err, user);
 	            });
 	        })
+
         } else if (user.email !== req.body.email){
+        	console.log(user.email, req.body.email)
         	return res.status(403).json({userFound: true, passwordsMatch: false, passwordReset: false, incorrectEmail: true})
+        }
+        else {
+            //passwords do not match
+            return res.json({userFound: true, passwordsMatch: false, passwordReset: false})
         }
       });
     }], function(err) { 

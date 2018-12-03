@@ -22,7 +22,7 @@ class Register extends Component {
 		if (form.password !== form.confirmPassword){
 			this.setState({passwordError: true})
 		} else {
-			post('/users/reset', form)
+			this.props.loader.post('/users/reset', form)
 			.then((data) => {
 				window.localStorage.packagejwt = data.token
 				this.props.setUser(data.user)
@@ -74,12 +74,13 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-	authRoute: state.setup.authRoute
+	authRoute: state.setup.authRoute,
+	loader: state.setup.loader,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  push: (path) => push(path),
-  setUser
+  	push: (path) => push(path),
+  	setUser
 }, dispatch)
 
 
