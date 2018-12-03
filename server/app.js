@@ -33,17 +33,24 @@ passport.use('jwt', new JwtStrategy(options, function(jwt_payload, user, done) {
         else return done(null, false);
     });
 }));
+
 //configure private and public routes
-app.use('/api', function(req,res,next){
-    authenticateRequest(req,res,next)
-    .then((user) => {
-        next()
-    })
-    .catch((err) => {
-        res.status(403).send(err)
-    })}, PrivateRoutes
+//private routes
+app.use(
+    '/api', 
+    function(req,res,next){
+        authenticateRequest(req,res,next)
+        .then((user) => {
+            next()
+        })
+        .catch((err) => {
+            res.status(403).send(err)
+        })
+    }, 
+    PrivateRoutes
 )
 
+//public routes
 app.use('/users', UserRoutes);
 
 module.exports = app;

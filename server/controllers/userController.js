@@ -5,17 +5,12 @@ const jwt = require('jsonwebtoken')
 
 
 exports.post = function (data) {
-	console.log(data)
 	return new Promise((resolve, reject) => {
 		data.email = data.email.toLowerCase()
 		let user = Object.assign({},data)
-		
 		delete user.password
-		
 		User.register(new User(user), data.password, function (err, user) {
-			console.log('saving ')
 			if (err) {
-				console.log(err)
 			  reject('Email already in use')
 			} else {
 			 	resolve(user)
