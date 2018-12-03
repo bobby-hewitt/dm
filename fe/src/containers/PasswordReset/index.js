@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Form, {TextInput, FindAddress} from 'components/Form'
 import { post, get, del,  } from 'helpers/request'
 import { setUser } from 'actions/user'
+import Button from 'components/Button'
 
 class Register extends Component {
 
@@ -13,28 +14,15 @@ class Register extends Component {
 		super(props)
 		this.state = {
 			addressError: false,
-			emailError: false,
 			passwordError: false
 		}
 	}
-	componentWillMount(){
-		del('/users/')
-		.then((data) => {
-			console.log(data)
-		})
-		// get('/users/h')
-		// .then((data) => {
-		// 	console.log(data)
-		// })
-	}
+
 	onSubmit(form){
 		if (form.password !== form.confirmPassword){
 			this.setState({passwordError: true})
-		} else if (!form.email) {
-			this.setState({emailError: true})
 		} else {
-			//handle submit form
-			post('/users', form)
+			post('/users/reset', form)
 			.then((data) => {
 				window.localStorage.packagejwt = data.token
 				this.props.setUser(data.user)
@@ -42,28 +30,44 @@ class Register extends Component {
 			})
 			.catch((err) => {
 				console.log(err)
-				if (err.responseText === 'Email already in use' ||err.responseText === 'A user with the given username is already registered'){
-					this.setState({emailError: 'Email already in use'})
+				if (err.responseJSON && err.responseJSON.incorrectEmail){
+					this.setState({errorMessage: 'Incorrect email provided'})
 				} else {
-					this.setState({emailError: 'Invalid email address'})
+					this.setState({errorMessage: 'This link is not valid. Please try again', invalidLink:true})
 				}
 				
 			})
-			this.setState({passwordError: false, emailError: false})
 		}
 	}
+
+	onTryAgain(){
+		this.props.push('/password-reset-request')
+	}
+
 	render(){
 		return(
 			<div>
+				{this.state.errorMessage &&
+					<p>{this.state.errorMessage}</p>
+				}
+				{!this.state.invalidLink && 
 				<Form 
-					submitText="Register"
-					formId="register"
+					submitText="Reset password"
+					formId="reset"
 					onSubmit={this.onSubmit.bind(this)}
 				>
 					<TextInput name="email" type="email" label={this.state.emailError ? this.state.emailError : 'Email'} fieldError={this.state.emailError} placeholder="email"/>
 					<TextInput name="password" type="password" label={this.state.passwordError ? 'please enter matching passwords' : 'Password'}fieldError={this.state.passwordError} placeholder="password"/>
 					<TextInput name="confirmPassword" type="password" fieldError={this.state.passwordError} placeholder="password"/>
+					<TextInput name="token" type="hidden" value={window.location.pathname.split('/')[2]}/>
 				</Form>
+				}
+				{this.state.invalidLink && 
+					<div>
+						
+						<Button text="Try again" onClick={this.onTryAgain.bind(this)}/> 
+					</div>
+				}
 
 			</div>
 		)

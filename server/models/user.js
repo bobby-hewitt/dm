@@ -5,6 +5,8 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var User = new Schema({
   placeId: String,
   address: String,
+  resetPasswordExpires: String,
+  resetPasswordToken: String
 });
  
 // See passport-local-mongoose docs for schema customization options

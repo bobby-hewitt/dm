@@ -83,10 +83,6 @@ export const del = (route) => {
 	return new Promise((resolve, reject) => {
 		$.ajax({
 			beforeSend: function(xhr){xhr.setRequestHeader('jwt', window.localStorage.packagejwt || '');},
-			credentials: 'include',
-			xhrFields: {
-		      withCredentials: true
-		   },
 		    url: url,
 		    type: 'DELETE',
 		    success: function(data) {

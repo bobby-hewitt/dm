@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-console.log('DB_URL', process.env.DB_URL)
 mongoose.connect(process.env.DB_URL,  { useNewUrlParser: true });
 mongoose.connection.on('error', function() {
     console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?')

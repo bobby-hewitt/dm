@@ -5,6 +5,8 @@ import FindAddress from './containers/FindAddress'
 import Register from './containers/Register'
 import Login from './containers/Login'
 import APITest from './containers/APITest'
+import PasswordResetRequest from './containers/PasswordResetRequest'
+import PasswordReset from './containers/PasswordReset'
 
 
 const Routes = () => (
@@ -14,6 +16,8 @@ const Routes = () => (
         <Route exact path="/" component={Register} />
         
         <Route exact path="/login" component={Login} />
+        <Route exact path="/password-reset-request" component={PasswordResetRequest} />
+        <Route path="/password-reset" component={PasswordReset} />
         <Route exact path="/test" component={APITest} />
       </div>
     </main>
