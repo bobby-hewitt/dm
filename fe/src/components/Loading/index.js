@@ -58,6 +58,29 @@ export default class Loading extends Component {
 		})
 	}
 
+	put(route, dataIn){
+		let self = this
+		this.setState({loading: true})
+		console.log('POSTING', route, dataIn)
+		const url = host + route
+		return new Promise((resolve, reject) => {
+			$.ajax({
+				url: url,
+				type: "PUT",
+				data: dataIn,
+				beforeSend: function(xhr){xhr.setRequestHeader('jwt', window.localStorage.packagejwt || '');},
+				success: function(response) { 
+					self.setState({loading: false})
+					resolve(response)
+				},
+				error: function(err){
+					self.setState({loading: false})
+					reject(err)
+				}
+			});
+		})
+	}
+
 	del(route){
 		let self = this
 		this.setState({loading: true})

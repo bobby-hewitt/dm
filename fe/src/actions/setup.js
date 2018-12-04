@@ -6,3 +6,12 @@ export const setLoader = (payload) => {
     })
   }
 }
+
+export const setRedirect = (payload) => {
+  return dispatch => {
+    dispatch({
+      type: 'SET_REDIRECT',
+      payload
+    })
+  }
+}

@@ -3,11 +3,15 @@ import { connectRouter } from 'connected-react-router'
 import account from './account'
 import user from './user'
 import setup from './setup'
+import blog from './blog'
+import product from './product'
 
 export default (history) => combineReducers({
   router: connectRouter(history),
   user,
-  setup
+  setup,
+  blog,
+  product
 })
 
 // configureStore.js

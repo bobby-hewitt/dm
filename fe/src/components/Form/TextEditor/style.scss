@@ -1,0 +1,144 @@
+
+@import 'styles/colors.scss';
+.textEditor{
+	max-width:100%;
+	padding:5px;
+	margin:5px;
+	box-sizing: border-box;
+	/* height:100vh; */
+}
+
+  
+
+.composeNoticeContent{
+	padding-top:60px;
+	padding-bottom:60px;
+}
+
+.toolbar-class{
+	margin:0!important;
+}
+
+.rdw-editor-toolbar{
+	margin:0;
+	display: inline-block;
+	position: relative;
+	input{
+		padding:0 10px;
+		display: flex;
+		flex:1;
+		height:40px;
+		/* padding:10px; */
+		margin:0;
+		margin-top:5px;
+		outline: 0;
+		border: 1px solid #cecece;
+		transition: all .3s;
+		border-radius: 2px;
+	}
+}
+
+.demo-wrapper{
+	display: inline-block!important;
+}
+
+.editor-class{
+	font-size: 12px;
+	border-radius: 2px;
+	padding:5px;
+	min-height:300px;
+	width:100%;
+
+	box-sizing: border-box;
+	border: 1px solid #cecece;
+
+}
+
+.image-popup, .rdw-link-modal{
+	border: 1px solid $grey;
+	position: absolute;
+	top:0;
+	left:0;
+	background:$white;
+	width:100%;
+	
+	padding:5px;
+	box-sizing: border-box;
+
+	.rdw-image-modal-url-section{
+		
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10px;
+		
+
+	}
+	.rdw-link-modal-btn, .rdw-image-modal-btn{
+
+			height:40px;
+			padding: 10px;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			
+			cursor: pointer;
+			border-radius: 2px;
+			color:$white;
+			background:$primary;
+			margin: 10px 5px 0 0;
+			text-align: center;
+			&.primary{
+				
+			}
+			&.disabled {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+		}
+}
+
+.rdw-dropdown-wrapper,.rdw-option-wrapper{
+
+			
+	height:30px;
+	cursor:pointer;
+	text-align: center;
+	vertical-align: center;
+	line-height: 30px;
+	min-width:30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:5px;
+	display: inline-block;
+	&:hover{
+		background:$white;
+		&.rdw-option-active{
+			background:$grey;
+		}
+	}
+}
+
+.rdw-dropdownoption-default{
+	text-align: left;
+	&:hover{
+		background:$white;
+	}
+}
+
+.rdw-link-modal-input, .rdw-link-modal-label{
+	margin:5px;
+}
+
+.linkPopup{
+	width:100%;
+}
+
+#openLinkInNewWindow, .rdw-link-modal-target-option{
+	display:none;
+}
+
+
+.rdw-option-active{
+	background:$grey;
+}

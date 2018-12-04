@@ -1,0 +1,79 @@
+.fileInput{
+	display: none;
+	position: relative;
+}
+
+.fileUploadContainer{
+
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	padding:5px;
+	margin:5px;
+	box-sizing: border-box;
+}
+.imagePreview{
+	max-width: 100%;
+	max-height: 50vh;
+}
+.fileUploadingContainer{
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:5px;
+	right:5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-left:5px;
+	background: #1F3134;
+	color:#fff;
+	margin:5px 5px 5px;
+}
+
+.fileUploadingContainer p{
+	margin:0;
+	padding:0;
+}
+
+.fileUploadSpinner{
+	height:50px;
+	width:auto;
+	position: absolute;
+	right:5px;
+	top:0;
+
+}
+
+.formFalseFileInput{
+	background: #242424;
+	color:#d8d8d8;
+	height:50px;
+	margin:5px;
+	padding: 0px 10px;
+	display: flex;
+	flex:1.5;
+	align-items: center;
+}
+
+.uploadButton{
+	width:50px;
+	font-family: FontAwesome;
+	content: "\f093";
+	background: #242424;
+	color:#d8d8d8;
+	height:50px;
+	margin:5px;
+	font-size: 20px;
+	
+	align-items: center;
+}
+
+.uploadButton::after{
+		font-family: FontAwesome;
+	content: "\f093";
+display: flex;
+align-items: center;
+justify-content: center;
+line-height: 50px;
+}

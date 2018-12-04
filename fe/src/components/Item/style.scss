@@ -1,0 +1,10 @@
+.itemContainer{
+	padding:15px;
+	.buttonContainer{
+		display: flex;
+		flex-direction: row;
+		.button{
+			margin-right:5px;
+		}
+	}
+}

@@ -26,7 +26,7 @@ class Login extends Component {
 			console.log('data out', data)
 			window.localStorage.packagejwt = data.token
 			this.props.setUser(data.user)
-			this.props.push(this.props.authRoute)
+			this.props.push(this.props.redirect)
 		})
 		.catch((err) => {
 			console.log('adta out error')
@@ -64,6 +64,7 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
 	loader: state.setup.loader,
+	redirect: state.setup.redirect,
 	authRoute: state.setup.authRoute
 })
 

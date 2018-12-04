@@ -72,6 +72,7 @@ class Register extends Component {
 
 const mapStateToProps = state => ({
 	authRoute: state.setup.authRoute,
+	redirect: state.setup.redirect,
 	loader: state.setup.loader,
 })
 

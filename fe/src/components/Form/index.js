@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import Button from 'components/Button'
 import "./style.scss";
 // import $ from "jquery";
-
-// export { default as Checkbox } from 'components/Form/Checkbox'
-export { default as TextInput } from 'components/Form/TextInput'
-export { default as FindAddress } from 'components/Form/FindAddress'
+export { default as ImageUpload } from './ImageUpload'
+export { default as TextInput } from './TextInput'
+export { default as TextEditor } from './TextEditor'
+export { default as FindAddress } from './FindAddress'
 
 
 export default class Form extends Component {
@@ -27,6 +27,8 @@ export default class Form extends Component {
             checkboxes[e.name] = [e.value];
           }
         }
+      } else if (e.type === 'file'){
+
       } else {
         obj[e.name] = e.value;
       }
@@ -45,7 +47,6 @@ export default class Form extends Component {
       <div>
         <form className="formContainer" id={this.props.formId} style={this.props.style}>
           {this.props.children}
-
           <div id="formButtonsContainer">
             <Button
               text={this.props.submitText}

@@ -9,7 +9,8 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const authenticateRequest = require('./helpers/authenticateRequest')
 const LocalStrategy = require('passport-local').Strategy;
-const PrivateRoutes = require('./routes/private');
+const AdminRoutes = require('./routes/admin');
+const IndexRoutes = require('./routes/index');
 const JwtStrategy = require('passport-jwt').Strategy;
 const jwtExtractor = require('./helpers/jwtExtractor');
 const bodyParser = require("body-parser")
@@ -37,7 +38,7 @@ passport.use('jwt', new JwtStrategy(options, function(jwt_payload, user, done) {
 //configure private and public routes
 //private routes
 app.use(
-    '/api', 
+    '/admin', 
     function(req,res,next){
         authenticateRequest(req,res,next)
         .then((user) => {
@@ -47,10 +48,11 @@ app.use(
             res.status(403).send(err)
         })
     }, 
-    PrivateRoutes
+    AdminRoutes
 )
 
 //public routes
 app.use('/users', UserRoutes);
+app.use(IndexRoutes);
 
 module.exports = app;

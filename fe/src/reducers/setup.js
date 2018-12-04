@@ -1,6 +1,7 @@
 const initialState = {
 	authRoute: '/home',
-	loader:null
+	loader:null,
+  redirect:'/home'
 }
 
 export default (state = initialState, action) => {
@@ -9,6 +10,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loader: action.payload
+      }
+    case 'SET_REDIRECT':
+      return { 
+        ...state,
+        redirect: action.payload
       }
     default:
       return state
