@@ -1,0 +1,21 @@
+.mouseHandler{
+	position: absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	pointer-events:none;
+	cursor: move; 
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    &.noCursor{
+    	cursor: none;
+    }
+	.mouseHandler__rotate--container{
+		position: absolute;
+		pointer-events:none;
+	}
+
+}
+

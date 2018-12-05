@@ -5,13 +5,15 @@ import user from './user'
 import setup from './setup'
 import blog from './blog'
 import product from './product'
+import cart from './cart'
 
 export default (history) => combineReducers({
   router: connectRouter(history),
   user,
   setup,
   blog,
-  product
+  product,
+  cart
 })
 
 // configureStore.js

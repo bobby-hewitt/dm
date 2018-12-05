@@ -73,12 +73,13 @@ class EditProduct extends Component {
 						secondaryAction={this.props.push.bind(this, '/admin/product')}
 						secondaryText="Cancel"
 					>	
-					<ImageUpload name="imageUpload" value={this.props.product.image} name="image"/>
+						<ImageUpload name="imageUpload" value={this.props.product.image} name="image"/>
 						{this.props.isEdit &&
-						<TextInput name="_id" value={this.props.product._id} type="hidden"/>	
+							<TextInput name="_id" value={this.props.product._id} type="hidden"/>	
 						}
 						<TextInput name="title" value={this.props.product.title} type="email"  onChange={this.onChange.bind(this)} placeholder="Title"/>
 						<TextEditor name="body" value={this.props.product.body} onChange={this.onChange.bind(this)}/>	
+						<TextInput name="price" value={this.props.product.price} type="number"  onChange={this.onChange.bind(this)} placeholder="Title"/>
 					</Form>
 				}
 			</div>

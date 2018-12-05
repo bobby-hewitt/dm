@@ -1,0 +1,24 @@
+@import '~styles/colors.scss';
+
+@keyframes inner--animation {
+    0%   {transform:translateX(0px)scale(1); opacity:1}
+    100% {transform:translateX(30px)scale(0);opacity:0 }
+}
+.dot{
+	animation: inner--animation 0.4s linear forwards;
+	top:0;
+	left:0;
+	transform:translate(-50%,-50%);
+	border-radius: 50%;
+	position: absolute;
+	&.grey{background:$grey};
+	&.cream{background:$cream};
+	&.maroon{background:$maroon};
+	&.orange{background:$orange};
+	&.blue{background:$blue};
+	&.brown{background:$brown};
+	&.brown2{background:$brown2};
+	&.rose{background:$rose};
+	&.peach{background:$peach};
+	&.charcoal{background:$charcoal};
+}

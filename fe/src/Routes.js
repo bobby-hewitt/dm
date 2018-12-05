@@ -3,30 +3,42 @@ import { Route, Switch, withRouter } from 'react-router'
 import Home from './containers/Home'
 import Auth from 'containers/Auth'
 import Admin from 'containers/Admin'
+import Product from 'containers/Product'
+import Nav from 'components/Nav'
 import Loading from 'components/Loading'
-import { setLoader } from 'actions/setup'
+import { setLoader, setMouseHandler } from 'actions/setup'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import MouseEffects from 'containers/ClickEffect/MouseEffects'
 
 class Routes extends Component {
 
 	componentDidMount(){
 		this.props.setLoader(this.refs.loader)
 	}
+	onMouseHandlerMount(mouseHandler){
+		this.props.setMouseHandler(mouseHandler)
+	}
+
 
 	render(){
 		return(
 			<div>
+				<Nav />
 			    <main>
 			    {this.props.loader &&
 			      <div className="container">
 			        <Route path="/auth" component={Auth} />
-			        <Route path="/home" component={Home} /> 
+			        <Route exact path="/" component={Home} /> 
+			        <Route exact path="/product/:id" component={Product} /> 
 			        <Route path="/admin" component={Admin} /> 
 			      </div>
 			  	}
 			       <Loading ref="loader"/>
+			       <MouseEffects
+						onMount={this.onMouseHandlerMount.bind(this)}
+						
+					/>
 			    </main>
 
 			</div>
@@ -40,7 +52,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	setLoader
+	setLoader,
+	setMouseHandler,
 }, dispatch)
 
 

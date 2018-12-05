@@ -28,8 +28,8 @@ class Item extends Component {
 			<div className="itemContainer">
 				<h5>{this.props.title}</h5>
 				<div className="buttonContainer">
-				<Button text="Edit" onClick={this.edit.bind(this)}/>
-				<Button text="Delete" onClick={this.delete.bind(this)}/>
+					<Button text="Edit" onClick={this.edit.bind(this)}/>
+					<Button text="Delete" onClick={this.delete.bind(this)}/>
 				</div>
 			</div>
 		)

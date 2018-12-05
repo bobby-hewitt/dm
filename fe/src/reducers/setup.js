@@ -1,7 +1,8 @@
 const initialState = {
 	authRoute: '/home',
 	loader:null,
-  redirect:'/home'
+  redirect:'/home',
+  mouseHandler: null,
 }
 
 export default (state = initialState, action) => {
@@ -16,6 +17,12 @@ export default (state = initialState, action) => {
         ...state,
         redirect: action.payload
       }
+    case 'SET_MOUSE_HANDLER':
+      return {
+        ...state,
+        mouseHandler: action.payload,
+      }
+   
     default:
       return state
   }

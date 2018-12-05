@@ -1,41 +1,50 @@
 @import 'styles/colors';
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro');
 
 h1{
 	font-size:96px;
 	font-weight: light;
+	font-family: 'Libre Baskerville', serif;
 }
 
 h2{
 	font-size:60px;
 	font-weight: light;
+	font-family: 'Libre Baskerville', serif;
 }
 
 h3{
 	font-size:48px;
 	font-weight: regular;
+	font-family: 'Libre Baskerville', serif;
 }
 
 h4{
 	font-size:34px;
 	font-weight: regular;
+	font-family: 'Libre Baskerville', serif;
 }
 
 h5{
 	font-size:24px;
 	font-weight: regular;
+	font-family: 'Libre Baskerville', serif;
 }
 
 h6{
 	font-size:20px;
 	font-weight: medium;
+	font-family: 'Libre Baskerville', serif;
 }
 
 p{
 	font-size:16px;
 	font-weight: regular;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .p{
 	font-size:12px;
 	font-weight: regular;
+	font-family: 'Source Sans Pro', sans-serif;
 }

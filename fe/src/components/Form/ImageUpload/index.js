@@ -47,7 +47,7 @@ class FileUpload extends Component {
 	uploadFile(file, signedRequest, url){
 		let self = this;
 	      var apiUrl = 'https://api.imgur.com/3/image';
-	      var apiKey = 'IMGUR_API_KEY';
+	      var apiKey = '8b9ea7e21c45b2f';
 	      var settings = {
 	        async: false,
 	        crossDomain: true,
@@ -118,6 +118,11 @@ class FileUpload extends Component {
 						<img src={this.state.link} className="imagePreview" />
 						<input name={this.props.name} type="hidden" value={this.state.link} />
 						<Button className={"uploadButton"} text="Choose another image "onClick={this.startAgain.bind(this)} />
+					</div>
+				}
+				{this.state.isUploading && 
+					<div className="uploading">
+						Please wait while the image uploads
 					</div>
 				}
 		  	</div>

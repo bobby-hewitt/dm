@@ -69,6 +69,12 @@
 	align-items: center;
 }
 
+.uploading{
+	width:100%;
+	height:100%;
+	background:black;
+}
+
 .uploadButton::after{
 		font-family: FontAwesome;
 	content: "\f093";

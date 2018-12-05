@@ -4,3 +4,10 @@
 	-webkit-flex-direction: row-reverse; /* Safari 6.1+ */
 	flex-direction: row-reverse; 
 }
+
+@mixin shaddow-weak {
+	box-shadow: 0px 0px 18px 5px rgba(16,16,16,0.2);
+}
+@mixin shaddow-strong {
+	box-shadow: 0px 0px 18px 5px rgba(16,16,16,0.5);
+}
