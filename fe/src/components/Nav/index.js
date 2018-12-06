@@ -3,7 +3,7 @@ import './style.scss'
 import { push } from 'connected-react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import ActionIcon from 'components/ActionIcon'
 
 class Nav extends Component {
 
@@ -33,13 +33,15 @@ class Nav extends Component {
 		return(
 			<div className="navContainer container-fluid">
 				<div className="container">
-				<div className="col-sm-12">
-				<h6>London Spice Company</h6>
-				</div>
-				<div className={`cart ${this.state.animated && 'animated'}`}>
-				</div>
+					<div className="col-sm-12">
+					{/*<h6>London Spice Company</h6>*/}
+					</div>
+					<div className={`cart ${this.state.animated && 'animated'}`}>
+						<ActionIcon action={this.props.push.bind(this, '/cart')} />
+					</div>
 				</div>
 			</div>
+			
 		)
 	}
 }

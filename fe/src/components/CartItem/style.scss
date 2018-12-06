@@ -1,0 +1,37 @@
+@import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+
+.cartItem{
+	display: flex;
+	flex-direction: row;
+	margin:15px;
+	.cartItemMeta{
+		height:100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		/* justify-content: center; */
+		.cartImage{
+			position: relative;
+		    width: 133px;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			background-position: center;
+			transition: all 0.3s ease;
+			.dummy {
+			    padding-top: 100px; 
+			  	
+			}
+		}
+	}
+	.cartItemController{
+		
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		p{
+			margin:15px;
+		}
+	}
+}

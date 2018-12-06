@@ -4,46 +4,44 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Form, { TextInput } from 'components/Form'
 import Button from 'components/Button'
-import Product from 'components/ProductCard'
+import CartItem from 'components/CartItem'
 
 import { setProduct, setProducts } from 'actions/product'
 import { addItem } from 'actions/cart'
 import './style.scss'
 
-class Home extends Component {
+class Cart extends Component {
 
 	componentWillMount(){
-		this.props.loader.get('/products')
-		.then((data) => {
-			console.log(data)
-			this.props.setProducts(data)
-		})
-		.catch((err)=> {
-			console.log(err)
-		})
+		console.log(this.props.cart)
+		let keys = Object.keys(this.props.cart)
+		for (var i in keys){
+
+		}
+		// this.props.loader.get('/products')
+		// .then((data) => {
+		// 	this.props.setProducts(data)
+		// })
+		// .catch((err)=> {
+		// 	console.log(err)
+		// })
 	}
 
-	onClickProduct(id){
-		this.props.push('/product/' + id)
-	}
+	
 
-	addToCart(product){
-		// console.log('adding ', id)
-		this.props.addItem(product)
-	}
+	
 
 	render(){
 		return(
 			<div className="container">
 				<div className="row">	
-				{this.props.products.map((product, i) => {
+				{this.props.cart.map((item, i) => {
 					return (
-						<div className="col-xl-3 col-lg-4 col-sm-6 col-xs-12" key={i}>
-							<Product
-								addToCart={this.addToCart.bind(this)}
-								onClick={this.onClickProduct.bind(this)} 
+						<div className="col-lg-12" key={i}>
+							<CartItem
 								index={i}
-								product={product}/>
+								{...item.product}
+								quantity={item.quantity}/>
 						</div>
 					)
 				})}
@@ -55,7 +53,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
 	loader: state.setup.loader,
-	products: state.product.products
+	cart: state.cart.items
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -67,4 +65,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Cart)

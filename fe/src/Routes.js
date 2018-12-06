@@ -6,6 +6,7 @@ import Admin from 'containers/Admin'
 import Product from 'containers/Product'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
+import Cart from 'containers/Cart'
 import { setLoader, setMouseHandler } from 'actions/setup'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -32,6 +33,7 @@ class Routes extends Component {
 			        <Route exact path="/" component={Home} /> 
 			        <Route exact path="/product/:id" component={Product} /> 
 			        <Route path="/admin" component={Admin} /> 
+			        <Route path="/cart" component={Cart} /> 
 			      </div>
 			  	}
 			       <Loading ref="loader"/>

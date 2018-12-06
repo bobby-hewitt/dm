@@ -41,7 +41,6 @@ export default class ProductCard extends Component {
 				</div>
 				<div className="metaContainer">
 					<h6>{title}</h6><p>$3.99</p>
-
 				</div>	
 			</div>
 		)
