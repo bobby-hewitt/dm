@@ -11,41 +11,64 @@ import { addItem } from 'actions/cart'
 import './style.scss'
 
 class Cart extends Component {
-
-	componentWillMount(){
-		console.log(this.props.cart)
-		let keys = Object.keys(this.props.cart)
-		for (var i in keys){
-
-		}
-		// this.props.loader.get('/products')
-		// .then((data) => {
-		// 	this.props.setProducts(data)
-		// })
-		// .catch((err)=> {
-		// 	console.log(err)
-		// })
-	}
-
-	
-
-	
-
 	render(){
+		console.log('CART COUNT', this.props.cartCount)
 		return(
 			<div className="container">
-				<div className="row">	
-				{this.props.cart.map((item, i) => {
-					return (
-						<div className="col-lg-12" key={i}>
-							<CartItem
-								index={i}
-								{...item.product}
-								quantity={item.quantity}/>
+			{this.props.cart.length > 0 &&
+				<div>
+				<div className="hideSM">
+					<div className=" row ">
+						<div className="col-sm-3 col-xs-12">
+							
 						</div>
-					)
-				})}
+						<div className="col-sm-3 col-xs-12">
+							<p>Item</p>	
+						</div>
+						<div className="col-sm-3 col-xs-12">
+							<p>Quantity</p>	
+						</div>
+						<div className="col-sm-1 col-xs-12" >
+							<p>Price</p>	
+						</div>
+					</div>
 				</div>
+					{this.props.cart.map((item, i) => {
+						return (
+							<div key={i}>
+								<CartItem
+									cartCount={this.props.cartCount}
+									index={i}
+									{...item.product}
+									quantity={item.quantity}/>
+							</div>
+						)
+					})}
+					<div className=" row ">
+					<div className="col-sm-9 hideSM" >
+					
+					</div>
+					<div className="col-sm-3">
+					<p>£{this.props.total}</p>
+					<div className="margin">
+						
+						<Button isRow text="Checkout" onClick={this.props.push.bind(this, '/checkout')}/>
+						
+					</div>
+					</div>
+					</div>
+					
+				</div>
+				}
+				{this.props.cart.length <= 0 && 
+					
+					<div className="info">
+
+						<p>Add some items to your cart before you check out</p>
+						<Button isRow text="Shop now" onClick={this.props.push.bind(this, '/')}/>
+					</div>
+				
+				}
 			</div>
 		)
 	}
@@ -53,7 +76,9 @@ class Cart extends Component {
 
 const mapStateToProps = state => ({
 	loader: state.setup.loader,
-	cart: state.cart.items
+	cart: state.cart.items,
+	total: state.cart.total,
+	cartCount: state.cart.count
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

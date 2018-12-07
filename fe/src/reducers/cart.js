@@ -32,14 +32,23 @@ const testItems = [
 
 
 const initialState = {
-  items: testItems,
-  count: 0
+  items: [],
+  count: 0,
+  total: 0,
+}
+
+function calculateTotalPrice(items){
+
+  let totalPrice = 0
+  for (var i in items){
+    console.log(items[i].product.price, parseFloat(items[i].product.price, 10))
+    totalPrice += parseFloat(items[i].product.price) * parseInt(items[i].quantity, 10) 
+  }
+  return Math.floor(totalPrice * 100) / 100
 }
 
 
-
 function findAndUpdateItem(items, product){
-  console.log(items)
     let itemFound = false
     for (var i =0 ; i < items.length; i++){
       if (items[i].product._id === product._id){
@@ -50,42 +59,73 @@ function findAndUpdateItem(items, product){
     if (!itemFound){
       items.push({product, quantity: 1})
     }
-    return items
+    return {
+      items,
+      total: calculateTotalPrice(items)
+    }
 }
 
 function changeQuantity(items, id, dir){
     for (var i = 0; i < items.length; i++){
-        if (items[i]._id === id){
+        if (items[i].product._id === id){
             items[i].quantity = dir === 'increase' ? items[i].quantity + 1 : items[i].quantity -1
         }
     }
-    return items
+    return {
+      items,
+      total: calculateTotalPrice(items)
+    }
+}
+
+function deleteItem(items, id){
+  let count = 0;
+  for (var i = 0; i < items.length; i++){
+        if (items[i].product._id === id){
+          count = items[i].quantity
+          items.splice(i ,1)
+        }
+    }
+    return {
+      items,
+      total: calculateTotalPrice(items),
+      count: count
+    }
 }
 
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
+      let newItems0 = findAndUpdateItem(state.items, action.payload)
       return {
         ...state,
         count: state.count + 1,
-        items: findAndUpdateItem(state.items, action.payload)
+        items: newItems0.items,
+        total: newItems0.total
       }
     case 'INCREASE_QUANTITY':
+      let newItems1 = changeQuantity(state.items, action.payload, 'increase')
       return{
         ...state,
-        count: state.count + 1,
-        items: changeQuantity(state.items, action.payload, 'increase')
+        count: state.count - 1,
+        items: newItems1.items,
+        total: newItems1.total
       }
     case 'DECREASE_QUANTITY':
+    let newItems2 = changeQuantity(state.items, action.payload, 'decrease')
       return{
         ...state,
         count: state.count + 1,
-        items: changeQuantity(state.items, action.payload, 'decrease')
+        items: newItems2.items,
+        total: newItems2.total
       }
     case 'DELETE_ITEM':
+      const newItems3 = deleteItem(state.items, action.payload)
       return{
-        ...state
+        ...state,
+        count: state.count - newItems3.count,
+        items: newItems3.items,
+        total: newItems3.total
       }
     default:
       return state

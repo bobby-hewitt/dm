@@ -14,42 +14,58 @@ import './style.scss'
 
 class Cart extends Component {
 
-	componentWillReceiveProps(np){
-		console.log(np.quantity)
-	}
+	
 
-	onRemoveItem(id){
-		this.props.decreaseQuantity(id)
-	}
-
-	onAddItem(id){
+	onIncreaseQuantity(id){
+		console.log('incease ')
 		this.props.increaseQuantity(id)
 	}
 
+	onDecreaseQuantity(id){
+		console.log(this.props.quantity, 'here')
+		if (this.props.quantity == 1){
+			console.log('here')
+			this.props.deleteItem(id)	
+		} else {
+			this.props.decreaseQuantity(id)
+			
+		}
+		
+	}
+
 	onDeleteFromCart(id){
-		console.log('deleting item', id)
+		this.props.deleteItem(id)
 	}
 
 	render(){
 		return(
 			<div className="cartItem row">
-				<div className="col-md-6 col-sm-12">
+				<div className="col-sm-2 col-md-3 col-xs-12 hideXS">
 					<div className="cartItemMeta">
-						<div className="cartImage" style={{backgroundImage: 'url(http://ew.content.allrecipes.com/sites/default/files/2018-07/herb-mixes-001_960px.jpg)'}}>
+						<div className="cartImage" style={{backgroundImage: 'url(' + this.props.image + ')'}}>
 							<div className="dummy">
 							</div>
 						</div>
-						{this.props.title}
+						
 					</div>
 				</div>
-				<div className="col-md-6 col-sm-12">
+				<div className="col-sm-3 col-md-3 col-xs-12">
+					<p className="marginV">{this.props.title}</p>
+				</div>
+				<div className="col-sm-4 col-md-3 col-xs-12">
 					<div className="cartItemController">
-						<ActionIcon action={this.onRemoveItem.bind(this, this.props._id)}/>
-						<p>{this.props.quantity}</p>
-						<ActionIcon action={this.onAddItem.bind(this, this.props._id)}/>
-						<ActionIcon secondary action={this.onDeleteFromCart.bind(this, this.props._id)}/>
+							<ActionIcon text="-"disabled={this.props.quantity <= 0} action={this.onDecreaseQuantity.bind(this, this.props._id)}/>
+							<p>{this.props.quantity}</p>
+							<ActionIcon text="+"action={this.onIncreaseQuantity.bind(this, this.props._id)}/>
+						
 					</div>
 				</div>
+				<div className="col-sm-2 col-md-1 col-xs-12" >
+					<p>£{this.props.price}</p>
+				</div>
+				<div className="deleteButton col-sm-1 col-md-2 col-xs-12" onClick={this.onDeleteFromCart.bind(this, this.props._id)} >
+						Remove 
+					</div>
 			</div>
 		)
 	}

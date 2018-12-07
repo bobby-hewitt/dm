@@ -8,6 +8,7 @@ export const addItem = (payload) => {
 }
 
 export const increaseQuantity = (payload) => {
+  
   return dispatch => {
     dispatch({
       type: 'INCREASE_QUANTITY',

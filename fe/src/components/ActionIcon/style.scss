@@ -3,12 +3,23 @@
 
 .actionIconContainer{
 	cursor: pointer;
-	width:44px;
+	min-width:44px;
 	height:44px;
 	border-radius: 2px;
 	background:$white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	@include shaddow-weak;
-	.secondary{
+	*{
+		margin:0;
+	}
+	margin:5px;
+	&.secondary{
 		box-shadow: none!important;
+	}
+	&.disabled{
+		pointer-events:none;
+		opacity:0;
 	}
 }

@@ -8,9 +8,12 @@ export default class ActionIcon extends Component {
 	}
 
 	render(){
+		var cn = 'actionIconContainer'
+		if (this.props.secondary) cn += ' secondary'
+		if (this.props.disabled) cn += ' disabled'
 		return(
-			<div className={`actionIconContainer ${this.props.secondary && 'secondary'}`} onClick={this.onClick.bind(this)}>
-
+			<div className={cn} style={{width: this.props.size, height:this.props.size}}onClick={this.onClick.bind(this)}>
+				<h6>{this.props.text}</h6>
 			</div>
 
 		)

@@ -7,7 +7,8 @@
 	cursor:pointer;
 	margin:30px 0 0 0;
 	box-sizing: border-box;
-	
+	border-radius: 2px;
+	overflow: hidden;
 	transition: all 0.3s ease;
 	.metaContainer{
 		padding:10px;
@@ -33,16 +34,26 @@
 		    padding-top: 55%; 
 		  	
 		}
-		.infoContainer{
+		
+		
+	}
+	&:hover{
+		.productImage{
+			/* background-size: 103%; */
+		}
+		/* transform:scale(1.01) */
+	}
+}
+.infoContainer{
 			transition: all 0.15s ease;
 			@include shaddow-weak;
-			border-radius:3px;
+			border-radius:2px;
 			width:50px;
 			height:50px;
 			background:#f7f7f7;
 			position: absolute;
 			bottom:0;
-			transform:translate(-20%, 50%);
+			transform:translate(-50%, -20%);
 			right:0;
 			display: flex;
 			align-items: center;
@@ -54,15 +65,6 @@
 			}
 			&.animated{
 				transition: none;
-				transform:scale(1.1)translate(-20%, 50%);
+				transform:scale(1.1)translate(-50%, -20%);
 			}
 		}
-		
-	}
-	&:hover{
-		.productImage{
-			/* background-size: 103%; */
-		}
-		/* transform:scale(1.01) */
-	}
-}

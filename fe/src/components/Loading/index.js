@@ -14,6 +14,12 @@ export default class Loading extends Component {
 		}
 	}
 
+	componentWillReceiveProps(np){
+		if (this.props.router.location.pathname !== np.router.location.pathname){
+			this.setState({loading:false})
+		}
+	}
+
 	get (route){
 		let self = this
 		this.setState({loading: true})

@@ -7,31 +7,54 @@
 	left:0;
 	width:100%;
 	height:75px;
+	color:$white;
 	background:$charcoal;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	z-index: 1;
-	h6{
-		text-align: center;
-		margin:0;
-		padding:20px;
-		color:$white;
+	vertical-align: center;
+	/* opacity:0; */
+	.brand{
+		position: absolute;
+		left:0;
+		top:0;
+		vertical-align: center;
 	}
+	.navRight{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		right:0;
+		top:0;
+		height:100%;
+	}
+	.brand{
+		transform:translateY(-50%);
+		left:0;
+		top:0;
+		position: absolute;
+		
+		margin:0;
+		padding:0;
+	}
+	.navLink{
+		cursor: pointer;
+		padding:5px;
+		margin:5px;
+		display: inline-block;
+	}
+	
+	
 	.container{
 		position: relative;
 	}
 	.cart{
 		transition: all 0.15s ease;
-		position: absolute;
-		right:0;
-		top:50%;
-		transform:translateY(-50%);
-		
-		
 		&.animated{
 			transition: none;
-			transform:scale(1.1)translateY( -50%);
+			transform:scale(1.1);
 		}
 	}
 

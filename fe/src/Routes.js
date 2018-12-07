@@ -7,6 +7,7 @@ import Product from 'containers/Product'
 import Nav from 'components/Nav'
 import Loading from 'components/Loading'
 import Cart from 'containers/Cart'
+import Checkout from 'containers/Checkout'
 import { setLoader, setMouseHandler } from 'actions/setup'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -26,21 +27,27 @@ class Routes extends Component {
 		return(
 			<div>
 				<Nav />
-			    <main>
+				
+			    <main >
+			    <div className="siteBackground"style={{backgroundImage: 'url(' + require('assets/images/wall.jpeg') + ")"}}>
+					<div className="whiteOverlay" />
+
+				</div>
 			    {this.props.loader &&
-			      <div className="container">
+			      <div className="container" >
 			        <Route path="/auth" component={Auth} />
 			        <Route exact path="/" component={Home} /> 
 			        <Route exact path="/product/:id" component={Product} /> 
 			        <Route path="/admin" component={Admin} /> 
 			        <Route path="/cart" component={Cart} /> 
+			        <Route path="/checkout" component={Checkout} /> 
+
 			      </div>
 			  	}
-			       <Loading ref="loader"/>
-			       <MouseEffects
-						onMount={this.onMouseHandlerMount.bind(this)}
-						
-					/>
+				       <Loading router={this.props.router} ref="loader"/>
+				       <MouseEffects
+							onMount={this.onMouseHandlerMount.bind(this)}		
+						/>
 			    </main>
 
 			</div>
@@ -50,7 +57,8 @@ class Routes extends Component {
  
 
 const mapStateToProps = state => ({
-	loader: state.setup.loader
+	loader: state.setup.loader,
+	router: state.router
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -3,8 +3,17 @@
 
 .cartItem{
 	display: flex;
-	flex-direction: row;
-	margin:15px;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid $grey;
+	
+
+	padding:15px;
+	box-sizing:border-box;
+	.deleteButton{
+		pointer:cursor;
+		color:$red;
+	}
 	.cartItemMeta{
 		height:100%;
 		display: flex;
@@ -13,23 +22,24 @@
 		/* justify-content: center; */
 		.cartImage{
 			position: relative;
-		    width: 133px;
+		    width: 100%;
 			background-repeat: no-repeat;
 			background-size: 100%;
 			background-position: center;
 			transition: all 0.3s ease;
 			.dummy {
-			    padding-top: 100px; 
+			    padding-top:55%; 
 			  	
 			}
 		}
 	}
 	.cartItemController{
 		
-		display: flex;
+		 display: flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content: center;
+		/*  */
+
 		p{
 			margin:15px;
 		}

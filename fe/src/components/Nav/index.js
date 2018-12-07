@@ -5,6 +5,17 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ActionIcon from 'components/ActionIcon'
 
+const links = [
+	{
+		text: 'Shop',
+		path: '/'
+	},
+	{
+		text: 'Recipes',
+		path: '/recipes'
+	},
+]
+
 class Nav extends Component {
 
 	constructor(props){
@@ -16,7 +27,7 @@ class Nav extends Component {
 
 	componentWillReceiveProps(np){
 		if (np.cartCount !== this.props.cartCount){
-			console.log('here')
+			
 			this.setState({animated: true}, ()=> {
 				this.timeout = setTimeout(() => {
 					this.setState({animated: false})
@@ -29,17 +40,27 @@ class Nav extends Component {
 		clearTimeout(this.timeout)
 	}
 
+
+
 	render(){
 		return(
 			<div className="navContainer container-fluid">
 				<div className="container">
-					<div className="col-sm-12">
-					{/*<h6>London Spice Company</h6>*/}
-					</div>
+				<h6 className="brand">London Spice Co.</h6>
+				<div className="navRight">
+					{links.map((link, i ) => {
+						return(
+							<div key={i}className="navLink" onClick={this.props.push.bind(this, link.path)}>
+								{link.text}
+							</div>
+						)
+					})}	
 					<div className={`cart ${this.state.animated && 'animated'}`}>
-						<ActionIcon action={this.props.push.bind(this, '/cart')} />
+						<ActionIcon size="30px"action={this.props.push.bind(this, '/cart')} />
 					</div>
 				</div>
+			</div>
+			
 			</div>
 			
 		)

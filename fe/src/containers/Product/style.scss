@@ -4,3 +4,16 @@
 .productPageContainer{
 	color:$white
 }
+
+.productImage {
+    position: relative;
+    width: 100%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+	transition: all 0.3s ease;
+	.dummy {
+	    padding-top: 55%; 
+	  	
+	}	
+}
