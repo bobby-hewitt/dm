@@ -16,7 +16,8 @@ class About extends Component {
 			<div className="aboutContainer">
 				
 				<HeadlineSection 
-					image={require('assets/images/spices.jpeg')}>
+					video={require('assets/video/salt.mov')}
+					>
 					<h3 className="centerText">Hello world</h3>
 					<Button text="Shop now" onClick={this.props.push.bind(this, '/')}/>
 				</HeadlineSection>	
@@ -51,7 +52,7 @@ class About extends Component {
 						<div className="row">
 							<div className="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
 								<h3 className="centerText">Hello world</h3>
-								<p>Cooking isn't hard but finding the right flavours can be tough.  That's where we come in.  We make life easy for you to find tintilating spices to cook the recipes you love and the ones you don't know you lveo yet. </p>
+							
 							</div>
 						</div>
 					</div>

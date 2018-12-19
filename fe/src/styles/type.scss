@@ -1,50 +1,52 @@
 @import 'styles/colors';
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro');
-
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200|Raleway');
 h1{
 	font-size:96px;
-	font-weight: light;
-	font-family: 'Libre Baskerville', serif;
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 h2{
 	font-size:60px;
-	font-weight: light;
-	font-family: 'Libre Baskerville', serif;
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 h3{
 	font-size:48px;
-	font-weight: regular;
-	font-family: 'Libre Baskerville', serif;
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 h4{
 	font-size:34px;
-	font-weight: regular;
-	font-family: 'Libre Baskerville', serif;
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 h5{
 	font-size:24px;
-	font-weight: regular;
-	font-family: 'Libre Baskerville', serif;
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 h6{
 	font-size:20px;
-	font-weight: medium;
-	font-family: 'Libre Baskerville', serif;
+	/* color:#711c1b!important; */
+	font-weight: light!important;
+	font-family: 'Poppins', sans-serif;
 }
 
 p{
 	font-size:16px;
 	font-weight: regular;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 .p{
 	font-size:12px;
 	font-weight: regular;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }

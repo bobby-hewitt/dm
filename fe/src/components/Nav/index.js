@@ -6,18 +6,18 @@ import { connect } from 'react-redux'
 import ActionIcon from 'components/ActionIcon'
 
 const links = [
-	// {
-	// 	text: 'Shop',
-	// 	path: '/'
-	// },
-	// {
-	// 	text: 'Recipes',
-	// 	path: '/recipes'
-	// },
-	// {
-	// 	text: 'About',
-	// 	path: '/about'
-	// },
+	{
+		text: 'Shop',
+		path: '/'
+	},
+	{
+		text: 'Recipes',
+		path: '/recipes'
+	},
+	{
+		text: 'About',
+		path: '/about'
+	},
 	{
 		text:'Test',
 		path:'about'
@@ -54,12 +54,12 @@ class Nav extends Component {
 		return(
 			<div className="navContainer container-fluid">
 				<div className="container">
-				{/*<h6 className="brand">London Spice Co.</h6>*/}
+				<h6 className="brand" onClick={this.props.push.bind(this,'/about')}>London Spice Co.</h6>
 				<div className="navRight">
 					{links.map((link, i ) => {
 						return(
 							<div key={i}className="navLink" onClick={this.props.push.bind(this, link.path)}>
-								{link.text}
+								<h6>{link.text}</h6>
 							</div>
 						)
 					})}	

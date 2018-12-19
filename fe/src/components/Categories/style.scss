@@ -1,0 +1,37 @@
+@import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+
+.categoriesContainer{
+	padding:30px 0;
+	@media only screen and (max-width: 900px) {
+		padding:0;
+	}
+	.category{
+		position: relative;
+		min-height:300px;
+		color:$white;
+		transition:all 0.3s ease;
+		width:100%;
+		height:100%;
+		background-size:cover;
+		background-position:center;
+		&.small{
+			min-height: 300px;
+		}
+		.overlay{
+			@include shaddow-weak;
+			@include transparent-background;
+			pointer-events:none;
+			position: absolute;
+			bottom:15px;
+			left:15px;
+			right:15px;
+			text-align: center;
+			/* background:#711c1b; */
+		}
+		&:hover{
+			z-index: 1;	
+		}
+	}
+}
+

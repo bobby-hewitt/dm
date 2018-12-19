@@ -1,12 +1,16 @@
 @import 'styles/colors.scss';
 @import 'styles/mixins.scss';
 
+video{
+  width: auto; 
+  height: auto;   
+  object-position:50% 50%;
+}
 .headlineSectionContainer{
 	@include section;
 	position: relative;
 	background-size: cover;
 	background-position: center;
-	
 	color:$white;
 	&.row{
 		flex-direction: row;

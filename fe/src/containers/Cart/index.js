@@ -12,7 +12,7 @@ import './style.scss'
 
 class Cart extends Component {
 	render(){
-		console.log('CART COUNT', this.props.cartCount)
+		
 		return(
 			<div className="container">
 			{this.props.cart.length > 0 &&
@@ -64,7 +64,7 @@ class Cart extends Component {
 					
 					<div className="info">
 
-						<p>Add some items to your cart before you check out</p>
+						<p>Add some items to your cart</p>
 						<Button isRow text="Shop now" onClick={this.props.push.bind(this, '/')}/>
 					</div>
 				
