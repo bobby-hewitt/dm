@@ -20,6 +20,7 @@ class ItemPage extends Component {
 			this.props.setProduct(data[0])
 		})
 		.catch((err)=> {
+			console.log('err')
 			console.log(err)
 		})
 	}

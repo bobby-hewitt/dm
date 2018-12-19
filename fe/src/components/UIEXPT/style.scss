@@ -1,0 +1,59 @@
+.UIEXPT{
+	
+}
+.bitContainer{
+	position: absolute;
+	top:50%;
+	left:50%;
+	width:10px;
+	height:10px;
+
+	animation: container 3s infinite linear;
+}
+.bit{
+	width:10px;
+	height: 10px;
+	border-radius: 5px;
+	background:red;
+	animation: test 3s forwards;
+	position: absolute;
+	top:0;
+	left:0;
+	&.even{
+		animation: test2 3s forwards;
+	}
+}
+
+@keyframes test {
+	0%{
+		transform: translate(0, 0)rotate(0);
+		opacity:1;
+	}
+	100%{
+		transform: translate(random(200) + %, -200%)rotate(360deg);
+		
+	}
+}
+
+
+@keyframes container {
+	0%{
+		transform: rotate(0);
+		opacity:1;
+	}
+	100%{
+		transform: rotate(360deg);
+		
+	}
+}
+
+@keyframes test2 {
+	0%{
+		transform: translate(0, 0)rotate(0);
+		opacity:1;
+	}
+	100%{
+		transform: translate(200%, -200%)rotate(360deg);
+		
+	}
+}

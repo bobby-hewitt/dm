@@ -50,7 +50,7 @@ class Cart extends Component {
 					</div>
 				</div>
 				<div className="col-sm-3 col-md-3 col-xs-12">
-					<p className="marginV">{this.props.title}</p>
+					<h6 className="marginV">{this.props.title}</h6>
 				</div>
 				<div className="col-sm-4 col-md-3 col-xs-12">
 					<div className="cartItemController">

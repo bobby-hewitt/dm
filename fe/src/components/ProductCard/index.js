@@ -38,11 +38,12 @@ export default class ProductCard extends Component {
 					
 				</div>
 				<div className="metaContainer">
-					<h6>{title}</h6><p>{price}</p>
-				</div>	
-					<div className={`infoContainer ${this.state.animated && 'animated'}`} onClick={this.onAddClick.bind(this)}>
+				<div className={`infoContainer ${this.state.animated && 'animated'}`} onClick={this.onAddClick.bind(this)}>
 							<img src={require('../../assets/icons/plus.png')} />
 						</div>
+					<h6>{title}</h6><p>{price}</p>
+				</div>	
+					
 			</div>
 		)
 	}

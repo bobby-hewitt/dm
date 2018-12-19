@@ -7,6 +7,7 @@ var Blog = require('../models/blog');
 var BlogController = require('../controllers/blogController');
 var Product = require('../models/product');
 var ProductController = require('../controllers/productController');
+var RecipeController = require('../controllers/recipeController');
 
 
 
@@ -76,6 +77,45 @@ router.put('/product/:id', function (req, res) {
     .then((blogs) => {
       console.log(blogs)
       res.status(200).send(blogs);
+    })
+  .catch((err) => {
+      res.status(500).send(err)
+  })  
+});
+
+//recipe
+router.post('/recipe', function (req, res) {
+  console.log('posting product')
+  RecipeController.post(req.body)
+  .then((recipe) => {
+
+    console.log('recipe', recipe)
+      res.status(200).send(recipe);
+  })
+  .catch((err) => {
+    console.log(err)
+      res.status(500).send(err)
+  })  
+});
+
+router.delete('/recipe/:id', function (req, res) {
+  req.params.id
+  RecipeController.delete(req.params.id)
+  .then((recipe) => {
+    console.log(recipe)
+      res.status(200).send(recipe);
+  })
+  .catch((err) => {
+      res.status(500).send(err)
+  })  
+});
+
+router.put('/recipe/:id', function (req, res) {
+  console.log('putting products')
+  RecipeController.put(req.body)
+    .then((recipe) => {
+      console.log(recipe)
+      res.status(200).send(recipe);
     })
   .catch((err) => {
       res.status(500).send(err)

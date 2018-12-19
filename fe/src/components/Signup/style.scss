@@ -1,0 +1,33 @@
+@import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+
+.signUpBackground{
+	position: relative;
+	
+	background-position: center;
+	background-size: cover;
+
+	.overlay{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width:100%;
+		height:100%;
+		background:rgba(0,0,0,0.3);
+		.signupContainer{
+			max-width: 400px;
+				padding:60px 0px;
+		}
+	}
+	.overlayedTitle{
+		padding: 15px 5px;
+		color:$white;
+	}
+	.signupForm{
+		display: flex;
+		flex-direction: column;
+		padding:30px;
+		@include shaddow-weak;
+		
+	}
+}

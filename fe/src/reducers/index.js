@@ -5,6 +5,7 @@ import user from './user'
 import setup from './setup'
 import blog from './blog'
 import product from './product'
+import recipe from './recipe'
 import cart from './cart'
 
 export default (history) => combineReducers({
@@ -13,6 +14,7 @@ export default (history) => combineReducers({
   setup,
   blog,
   product,
+  recipe,
   cart
 })
 

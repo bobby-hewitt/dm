@@ -8,7 +8,8 @@
 }
 
 h1,h2,h3,h4,h5,h6,p{
-	margin:0;
+	margin:15px 0;
+
 }
 body {
 	
@@ -16,7 +17,11 @@ body {
 	min-height: 100vh;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	padding-top:100px;
+	padding-top:75px;
+}
+
+.centerText{
+	text-align: center;
 }
 
 .margin{
@@ -46,7 +51,18 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+	.col-sm-spacing{
+		padding:30px 0 0 0;
+	}
+ .hideSM{
+  	display: none!important;
+	}
+}
 
+@media only screen and (max-width: 992px) {
+	.col-md-spacing{
+		padding:30px 0 0 0;
+	}
  .hideSM{
   	display: none!important;
 	}
