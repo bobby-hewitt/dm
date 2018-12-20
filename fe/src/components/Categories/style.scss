@@ -7,11 +7,14 @@
 		padding:0;
 	}
 	.category{
+		border-radius:50%;
+		overflow:hidden;
 		position: relative;
-		min-height:300px;
+		padding-top:100%;
 		color:$white;
 		transition:all 0.3s ease;
 		width:100%;
+		
 		height:100%;
 		background-size:cover;
 		background-position:center;
@@ -19,8 +22,8 @@
 			min-height: 300px;
 		}
 		.overlay{
-			@include shaddow-weak;
-			@include transparent-background;
+			/* @include shaddow-weak; */
+			/* @include transparent-background; */
 			pointer-events:none;
 			position: absolute;
 			bottom:15px;

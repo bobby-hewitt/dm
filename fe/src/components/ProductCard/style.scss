@@ -52,7 +52,7 @@
 .infoContainer{
 			transition: all 0.15s ease;
 			@include shaddow-weak;
-			/* border-radius:2px; */
+			border-radius:50%;
 			width:44px;
 			height:44px;
 			background:#f7f7f7;

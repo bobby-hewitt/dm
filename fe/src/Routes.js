@@ -35,7 +35,6 @@ class Routes extends Component {
 			    <main >
 			    <div className="siteBackground"style={{backgroundImage: 'url(' + require('assets/images/wall.jpeg') + ")"}}>
 					<div className="whiteOverlay" />
-
 				</div>
 			    {this.props.loader &&
 			      <div >

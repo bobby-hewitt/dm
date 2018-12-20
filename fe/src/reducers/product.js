@@ -99,23 +99,28 @@ const initialProducts = [
 
 const initialCategories = [
   {
+    title: 'All categories',
+    path: '/shop?category=all',
+    image: 'https://images.unsplash.com/photo-1521012012373-6a85bade18da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80'
+  },
+  {
     title: 'Tea',
-    path: '/shop?tea',
+    path: '/shop?category=tea',
     image: 'https://images.unsplash.com/photo-1521012012373-6a85bade18da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80'
   },
   {
     title: 'Salt',
-    path: '/shop?salt',
+    path: '/shop?category=salt',
     image: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80'
   },
   {
     title: 'Spices',
-    path: '/shop?spices',
+    path: '/shop?category=spices',
     image: 'https://images.unsplash.com/photo-1532336414038-cf19250c5757?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80'
   },
   {
     title: 'Chilis',
-    path: '/shop?chili',
+    path: '/shop?category=chili',
     image: 'https://images.unsplash.com/photo-1534511591090-223e3c6814c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'
   }
 ]
