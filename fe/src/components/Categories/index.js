@@ -14,11 +14,10 @@ export default class Categories extends Component {
 						</div>
 					</div>*/}
 					<div className="row">
-					<div className='offset-md-1'/>
+					<div className='offset-md-2'/>
 					{this.props.categories && this.props.categories.map((category, i) => {
-
 						return(
-							<div key={i} className="col-md-2  col-xs-12" >
+							<div key={i} className="col-md-4  col-xs-12" >
 								<div className="category" style={{backgroundImage: 'url(' + category.image + ')'}}>
 									<div className="overlay">
 										<Button onClick={this.props.push.bind(this, category.path)} text={category.title}/>

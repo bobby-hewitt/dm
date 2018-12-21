@@ -85,6 +85,7 @@ router.put('/product/:id', function (req, res) {
 
 //recipe
 router.post('/recipe', function (req, res) {
+  console.log('posting recipe')
   console.log('posting product')
   RecipeController.post(req.body)
   .then((recipe) => {
@@ -99,6 +100,7 @@ router.post('/recipe', function (req, res) {
 });
 
 router.delete('/recipe/:id', function (req, res) {
+  console.log('deleting recipe')
   req.params.id
   RecipeController.delete(req.params.id)
   .then((recipe) => {
@@ -111,7 +113,7 @@ router.delete('/recipe/:id', function (req, res) {
 });
 
 router.put('/recipe/:id', function (req, res) {
-  console.log('putting products')
+  console.log('putting recipe')
   RecipeController.put(req.body)
     .then((recipe) => {
       console.log(recipe)

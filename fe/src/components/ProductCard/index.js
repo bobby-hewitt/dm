@@ -14,7 +14,7 @@ export default class ProductCard extends Component {
 
 	onAddClick(e){
 		e.stopPropagation()
-		this.props.addToCart(this.props.product)
+		this.props.action(this.props.product, this.props.index)
 		this.setState({animated: true}, ()=> {
 			this.timeout = setTimeout(() => {
 				this.setState({animated: false})
@@ -32,14 +32,11 @@ export default class ProductCard extends Component {
 		return(
 			<div className="productContainer" onClick={this.props.onClick.bind(this, _id)}>	
 				<div className="productImage" style={{backgroundImage: 'url('  + image + ')'}} >
-				    <div className="dummy"></div>
-					
-					
-					
+				    <div className="dummy"></div>					
 				</div>
 				<div className="metaContainer">
 				<div className={`infoContainer ${this.state.animated && 'animated'}`} onClick={this.onAddClick.bind(this)}>
-					<img src={require('../../assets/icons/plus.png')} />
+					{this.props.isMinus ? '-' : '+'}
 				</div>
 				<h6>{title}</h6>
 				<p>{price}</p>

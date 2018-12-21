@@ -13,7 +13,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 10;
+	z-index: 100000000000;
 	vertical-align: center;
 	/* opacity:0; */
 	.brand{
@@ -40,6 +40,8 @@
 		padding:0;
 	}
 	.navLink{
+	z-index: 100000000001;
+
 		cursor: pointer;
 		padding:5px;
 		margin:5px;

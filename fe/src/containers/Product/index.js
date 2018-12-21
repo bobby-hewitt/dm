@@ -17,6 +17,7 @@ class ItemPage extends Component {
 		const id = this.props.router.location.pathname.split('/')[2]
 		this.props.loader.get('/product/' + id)
 		.then((data) => {
+			console.log("PRODUCT", data[0])
 			this.props.setProduct(data[0])
 		})
 		.catch((err)=> {

@@ -21,7 +21,7 @@ export const setRecipe = (payload, callback) => {
 
 
 export const onFieldChange = (payload) => {
-  console.log(payload)
+  
   return dispatch => {
     dispatch({
       type: 'ON_RECIPE_FIELD_CHANGE',

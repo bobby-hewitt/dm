@@ -19,11 +19,13 @@ class Recipes extends Component {
 	}
 
 	componentWillMount(){
-		this.props.loader.get('/recipe')
+		this.props.loader.get('/recipes')
 		.then((data) => {
+			console.log('recipes,', data)
 			this.props.setRecipes(data)
 		})
 		.catch((err)=> {
+			console.log('here', err)
 			console.log(err)
 		})
 	}

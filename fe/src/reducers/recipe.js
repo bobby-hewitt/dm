@@ -2,7 +2,10 @@
 
 const initialState = {
   recipes: [],
+
   recipe: {
+    productIds: JSON.stringify([]),
+    products: JSON.stringify([]),
     image: '',
     title: '',
     body: ''

@@ -35,8 +35,7 @@ class Admin extends Component {
 	render(){
 			return(
 				<div className="Admin">
-					<div onClick={this.onClick.bind(this, '/product')}>P</div>
-					<div onClick={this.onClick.bind(this, '/blog')}>B</div>
+					<div className="container">
 					<Route exact path="/admin/product" component={Products} />
 					<Route exact path="/admin/blog" component={Blog} />
 					<Route exact path="/admin/recipe" component={Recipe} />
@@ -45,6 +44,8 @@ class Admin extends Component {
 					<Route path="/admin/blog/edit" render={() => <AddBlog isEdit/>} />
 					<Route path="/admin/product/add" component={AddProduct} />
 					<Route path="/admin/product/edit" render={() => <AddProduct isEdit/>} />
+					<Route path="/admin/recipe/edit" render={() => <AddRecipe isEdit/>} />
+					</div>
 				</div>
 
 			)

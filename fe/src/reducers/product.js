@@ -127,7 +127,7 @@ const initialCategories = [
 
 
 const initialState = {
-  products: initialProducts,
+  products: [],
   categories: initialCategories,
   product: {
     title: '',

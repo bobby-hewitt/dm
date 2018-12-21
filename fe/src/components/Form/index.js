@@ -9,6 +9,7 @@ export { default as ImageUpload } from './ImageUpload'
 export { default as TextInput } from './TextInput'
 export { default as TextEditor } from './TextEditor'
 export { default as FindAddress } from './FindAddress'
+export { default as ProductSelect } from './ProductSelect'
 
 
 export default class Form extends Component {

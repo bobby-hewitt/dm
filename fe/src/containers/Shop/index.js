@@ -6,6 +6,7 @@ import Form, { TextInput } from 'components/Form'
 import Button from 'components/Button'
 import Product from 'components/ProductCard'
 import Categories from 'components/Categories'
+import Search from 'components/Search'
 
 import { setProduct, setProducts } from 'actions/product'
 import { addItem } from 'actions/cart'
@@ -39,30 +40,21 @@ class Home extends Component {
 				push={this.props.push}
 				categories={this.props.categories}/>
 			<div className="container">
-				
+				<div className="row">
+					<Search type="products"/>
+				</div>
 				<div className="row">	
-				{this.props.products.map((product, i) => {
-					return (
-						<div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={i}>
-							<Product
-								addToCart={this.addToCart.bind(this)}
-								onClick={this.onClickProduct.bind(this)} 
-								index={i}
-								product={product}/>
-						</div>
-					)
-				})}	
-				{this.props.products.reverse().map((product, i) => {
-					return (
-						<div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={i}>
-							<Product
-								addToCart={this.addToCart.bind(this)}
-								onClick={this.onClickProduct.bind(this)} 
-								index={i}
-								product={product}/>
-						</div>
-					)
-				})}	
+					{this.props.products.map((product, i) => {
+						return (
+							<div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={i}>
+								<Product
+									action={this.addToCart.bind(this)}
+									onClick={this.onClickProduct.bind(this)} 
+									index={i}
+									product={product}/>
+							</div>
+						)
+					})}	
 				</div>
 			</div>
 			</div>

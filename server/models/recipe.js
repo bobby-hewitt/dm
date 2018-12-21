@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Recipe = new Schema({
+	productIds: Array,
 	title: String,
 	image: String,
 	body: String,

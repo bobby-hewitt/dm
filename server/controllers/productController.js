@@ -1,5 +1,6 @@
 var Product = require('../models/product');
-
+const RecipeController = require('./recipeController')
+var mongoose = require('mongoose');
 
 exports.post = function (data) {
 	
@@ -15,11 +16,32 @@ exports.post = function (data) {
 exports.get = function (data) {
 	return new Promise((resolve, reject) => {
 	    Product.find(data, function (err, products) {
-	    	console.log(products)
+	    	
 	        if (err) {
-	        	reject('Could not find products')
+	        	reject('Could not find products',err)
 	        } else {
-	        	resolve(products)
+	        	console.log('tpye', data._id)
+	        	if (data && data._id && typeof data._id === 'string'){
+	        		RecipeController.get({productIds: data._id})
+	        		.then((recipes) => {
+	        			let newProducts = Object.assign({recipes: recipes}, products[0]._doc)
+	        			console.log(newProducts.recipes)
+	        			let toSend = [newProducts]
+
+	        			// newProducts[0].recipes = recipes
+	        			// console.log(newProducts.recipes)
+	        			// console.log(products)
+	        			resolve(toSend)
+	        		})
+	        		.catch((err) => {
+	        			console.log('error getting recipes for products')
+	        		})
+	        	}
+	        	else {
+	        		console.log('resolving without looking for recipes')
+	        		resolve(products)
+	        	}
+	        	
 	        }
 	    });
 	})
